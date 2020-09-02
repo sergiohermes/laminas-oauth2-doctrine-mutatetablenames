@@ -1,16 +1,10 @@
-Mutate tablename for Apigility OAuth2 Doctrine Adapter
+Mutate tablename for Laminas API Tools OAuth2 Doctrine Adapter
 ======================================================
 
 About
 -----
 
-This module allows to configure the tables that the [OAuth2 Doctrine Adapter](https://github.com/api-skeletons/zf-oauth2-doctrine) for [Apigility](https://apigility.org) generates.
-
-[![Latest Stable Version](https://poser.pugx.org/bushbaby/zf-oauth2-doctrine-mutatetablenames/v/stable)](https://packagist.org/packages/bushbaby/zf-oauth2-doctrine-mutatetablenames)
-[![Total Downloads](https://poser.pugx.org/bushbaby/zf-oauth2-doctrine-mutatetablenames/downloads)](https://packagist.org/packages/bushbaby/zf-oauth2-doctrine-mutatetablenames)
-[![Latest Unstable Version](https://poser.pugx.org/bushbaby/zf-oauth2-doctrine-mutatetablenames/v/unstable)](https://packagist.org/packages/bushbaby/zf-oauth2-doctrine-mutatetablenames)
-[![Coverage Status](https://coveralls.io/repos/github/basz/zf-oauth2-doctrine-mutatetablenames/badge.svg?branch=master)](https://coveralls.io/github/basz/zf-oauth2-doctrine-mutatetablenames?branch=master)
-[![License](https://poser.pugx.org/bushbaby/zf-oauth2-doctrine-mutatetablenames/license)](https://packagist.org/packages/bushbaby/zf-oauth2-doctrine-mutatetablenames)
+This module allows to configure the tables that the [OAuth2 Doctrine Adapter](https://github.com/API-Skeletons/oauth2-doctrine) for [Laminas API Tools](https://api-tools.getlaminas.org/) generates.
 
 Installation
 ------------
@@ -18,7 +12,7 @@ Installation
 Installation of this module uses composer. For composer documentation, please refer to [getcomposer.org](http://getcomposer.org/).
 
 ```sh
-$ composer require bushbaby/zf-oauth2-doctrine-mutatetablenames
+$ composer require sergiohermes/laminas-oauth2-doctrine-mutatetablenames
 ```
 
 Add this module to your application's configuration:
@@ -26,7 +20,7 @@ Add this module to your application's configuration:
 ```php
 'modules' => array(
    ...
-   'ZF\OAuth2\Doctrine\MutateTableNames',
+   'LaminasApi\\OAuth2\\Doctrine\\MutateTableNames',
 ),
 ```
 

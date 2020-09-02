@@ -13,7 +13,7 @@ CHANGELOG
 
 0.2.2 Maintenance release
 
-- updated so it works with `api-skeletons/zf-oauth2-doctrine` again
+- updated so it works with `api-skeletons/apiskeletons-oauth2-doctrine` again
 
 0.2.1 Maintenance release
 

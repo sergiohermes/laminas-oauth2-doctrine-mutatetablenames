@@ -11,7 +11,7 @@
         backupGlobals="false"
         syntaxCheck="true"
         >
-    <testsuite name="ZfOAuth2DoctrineMutateablename tests">
+    <testsuite name="LaminasApiOAuth2DoctrineMutateablename tests">
         <directory>./tests</directory>
     </testsuite>
     <filter>

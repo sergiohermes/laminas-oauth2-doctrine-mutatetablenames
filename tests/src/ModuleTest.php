@@ -1,20 +1,20 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\MutateTableNamesTest;
+namespace LaminasApi\OAuth2\Doctrine\MutateTableNamesTest;
 
 use Doctrine\Common\EventManager;
-use Zend\EventManager\EventInterface;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\BootstrapListenerInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
-use Zend\Mvc\ApplicationInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use ZF\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
-use ZF\OAuth2\Doctrine\MutateTableNames\Module;
+use Laminas\EventManager\EventInterface;
+use Laminas\ModuleManager\Feature\AutoloaderProviderInterface;
+use Laminas\ModuleManager\Feature\BootstrapListenerInterface;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\ModuleManager\Feature\DependencyIndicatorInterface;
+use Laminas\Mvc\ApplicationInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
+use LaminasApi\OAuth2\Doctrine\MutateTableNames\Module;
 
 /**
- * @covers  \ZF\OAuth2\Doctrine\MutateTableNames\Module
+ * @covers  \LaminasApi\OAuth2\Doctrine\MutateTableNames\Module
  */
 class ModuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,7 +41,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ->method('get')
             ->with('config')
             ->willReturn([
-                'zf-oauth2-doctrine' => [
+                'apiskeletons-oauth2-doctrine' => [
                     'default' => [
                         'event_manager' => 'event_manager_service_name'
                     ]
@@ -77,11 +77,11 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $autoload = $module->getAutoloaderConfig();
         $this->assertInternalType('array', $autoload);
         $this->assertSame(array(
-            'Zend\\Loader\\StandardAutoloader' =>
+            'Laminas\\Loader\\StandardAutoloader' =>
                 array(
                     'namespaces' =>
                         array(
-                            'ZF\\OAuth2\\Doctrine\\MutateTableNames' => realpath(__DIR__ . '/../../src'),
+                            'LaminasApi\\OAuth2\\Doctrine\\MutateTableNames' => realpath(__DIR__ . '/../../src'),
                         ),
                 ),
         ), $autoload);
@@ -102,6 +102,6 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(DependencyIndicatorInterface::class, $module);
 
-        $this->assertSame(['ZF\OAuth2\Doctrine'], $module->getModuleDependencies());
+        $this->assertSame(['ApiSkeletons\OAuth2\Doctrine'], $module->getModuleDependencies());
     }
 }

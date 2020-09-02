@@ -1,12 +1,12 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\MutateTableNamesTest;
+namespace LaminasApi\OAuth2\Doctrine\MutateTableNamesTest;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-use ZF\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
+use LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
 
 /**
- * @covers  \ZF\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber
+ * @covers  \LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber
  */
 class MutateTableNamesSubscriberTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class MutateTableNamesSubscriberTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->config     = include __DIR__ . '/../../../config/oauth2.doctrine-orm.mutatetablenames.global.php.dist';
-        $this->config     = $this->config['zf-oauth2-doctrine']['mutatetablenames'];
+        $this->config     = $this->config['apiskeletons-oauth2-doctrine']['mutatetablenames'];
         $this->subscriber = new MutateTableNamesSubscriber($this->config);
     }
 
@@ -57,35 +57,35 @@ class MutateTableNamesSubscriberTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [
-                \ZF\OAuth2\Doctrine\Entity\AccessToken::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\AccessToken::class,
                 'access_token_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\AuthorizationCode::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\AuthorizationCode::class,
                 'authorization_code_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\Client::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\Client::class,
                 'client_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\Jti::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\Jti::class,
                 'jti_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\Jwt::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\Jwt::class,
                 'jwt_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\PublicKey::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\PublicKey::class,
                 'public_key_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\RefreshToken::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\RefreshToken::class,
                 'refresh_token_entity',
             ],
             [
-                \ZF\OAuth2\Doctrine\Entity\Scope::class,
+                \ApiSkeletons\OAuth2\Doctrine\Entity\Scope::class,
                 'scope_entity',
             ],
         ];
