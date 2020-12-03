@@ -6,17 +6,18 @@ use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasApi\OAuth2\Doctrine\MutateTableNames\Container\MutateTableNamesSubscriberFactory;
 use LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers  \LaminasApi\OAuth2\Doctrine\MutateTableNames\Container\MutateTableNamesSubscriberFactory
  */
-class MutateTableNamesSubscriberFactoryTest extends \PHPUnit_Framework_TestCase
+class MutateTableNamesSubscriberFactoryTest extends TestCase
 {
     public function testCanCreateFromFactory()
     {
         $container = $this->getMockBuilder(ContainerInterface::class)->getMock();
 
-        $container->expects($this->at(0))
+        $container
             ->method('get')
             ->with('config')
             ->willReturn([
@@ -28,7 +29,8 @@ class MutateTableNamesSubscriberFactoryTest extends \PHPUnit_Framework_TestCase
                         'default' => []
                     ]
                 ]
-            ]);
+            ])
+        ;
 
         $factory = new MutateTableNamesSubscriberFactory();
         $service = $factory($container, 'requestedname');
@@ -40,7 +42,7 @@ class MutateTableNamesSubscriberFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->getMockBuilder(ServiceLocatorInterface::class)->getMock();
 
-        $container->expects($this->at(0))
+        $container
             ->method('get')
             ->with('config')
             ->willReturn([
@@ -64,7 +66,7 @@ class MutateTableNamesSubscriberFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->getMockBuilder(ContainerInterface::class)->getMock();
 
-        $container->expects($this->at(0))
+        $container
             ->method('get')
             ->with('config')
             ->willReturn([
