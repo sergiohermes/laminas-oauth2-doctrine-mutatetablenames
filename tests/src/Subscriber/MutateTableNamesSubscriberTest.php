@@ -4,18 +4,19 @@ namespace LaminasApi\OAuth2\Doctrine\MutateTableNamesTest;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers  \LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber
  */
-class MutateTableNamesSubscriberTest extends \PHPUnit_Framework_TestCase
+class MutateTableNamesSubscriberTest extends TestCase
 {
     /**
      * @var MutateTableNamesSubscriber
      */
     private $subscriber;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->config     = include __DIR__ . '/../../../config/oauth2.doctrine-orm.mutatetablenames.global.php.dist';
         $this->config     = $this->config['apiskeletons-oauth2-doctrine']['mutatetablenames'];

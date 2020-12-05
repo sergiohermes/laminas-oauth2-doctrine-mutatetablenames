@@ -12,11 +12,12 @@ use Laminas\Mvc\ApplicationInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasApi\OAuth2\Doctrine\MutateTableNames\EventSubscriber\MutateTableNamesSubscriber;
 use LaminasApi\OAuth2\Doctrine\MutateTableNames\Module;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers  \LaminasApi\OAuth2\Doctrine\MutateTableNames\Module
  */
-class ModuleTest extends \PHPUnit_Framework_TestCase
+class ModuleTest extends TestCase
 {
     public function testAttachesEventSubscriberToDoctrineEventManager()
     {
@@ -37,28 +38,21 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $application->expects($this->once())->method('getServiceManager')->willReturn($serviceLocator);
 
         // get config from service manager mock
-        $serviceLocator->expects($this->at(0))
+        $serviceLocator
             ->method('get')
-            ->with('config')
-            ->willReturn([
-                'apiskeletons-oauth2-doctrine' => [
-                    'default' => [
-                        'event_manager' => 'event_manager_service_name'
+            ->withConsecutive(['config'], [MutateTableNamesSubscriber::class], ['event_manager_service_name'])
+            ->willReturnOnConsecutiveCalls(
+                [
+                    'apiskeletons-oauth2-doctrine' => [
+                        'default' => [
+                            'event_manager' => 'event_manager_service_name'
+                        ]
                     ]
-                ]
-            ]);
-
-        // get subscriber from service manager mock
-        $serviceLocator->expects($this->at(1))
-            ->method('get')
-            ->with(MutateTableNamesSubscriber::class)
-            ->willReturn($mutateTableNamesSubscriber);
-
-        // get doctrine event manager mock from service locatior
-        $serviceLocator->expects($this->at(2))
-            ->method('get')
-            ->with('event_manager_service_name')
-            ->willReturn($eventManager);
+                ],
+                $mutateTableNamesSubscriber,
+                $eventManager
+            )
+        ;
 
         // add subscriber to doctrine event manager
         $eventManager->expects($this->once())
@@ -75,7 +69,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(AutoloaderProviderInterface::class, $module);
 
         $autoload = $module->getAutoloaderConfig();
-        $this->assertInternalType('array', $autoload);
+        $this->assertIsArray($autoload);
         $this->assertSame(array(
             'Laminas\\Loader\\StandardAutoloader' =>
                 array(
@@ -93,7 +87,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(ConfigProviderInterface::class, $module);
 
-        $this->assertInternalType('array', $module->getConfig());
+        $this->assertIsArray($module->getConfig());
     }
 
     public function testModuleDependencies()
